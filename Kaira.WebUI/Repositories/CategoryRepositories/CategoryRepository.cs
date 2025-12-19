@@ -31,7 +31,7 @@ namespace Kaira.WebUI.Repositories.CategoryRepositories
 
         public async Task<UpdateCategoryDto> GetByIdAsync(int id)
         {
-            string query = "select * from categories where CategoryId = @CategoryId";
+            string query = "SELECT CategoryId, Name FROM Categories WHERE CategoryId = @CategoryId";
             var parameters = new DynamicParameters();
             parameters.Add("@CategoryId", id);
             return await _db.QueryFirstOrDefaultAsync<UpdateCategoryDto>(query, parameters);

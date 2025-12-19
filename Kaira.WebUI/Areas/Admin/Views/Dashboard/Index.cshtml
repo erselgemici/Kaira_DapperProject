@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+
+        <div class="col-lg-8 mb-4 order-0">
+            <div class="card">
+                <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Hoşgeldin Admin! 🎉</h5>
+                            <p class="mb-4">
+                                Kaira mağaza yönetim paneline hoşgeldin. Sol menüden ürünlerini yönetebilir, site içeriklerini güncelleyebilirsin.
+                            </p>
+                            <a href="/Admin/Product/Index" class="btn btn-sm btn-outline-primary">Ürünleri Yönet</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 text-center text-sm-left">
+                        <div class="card-body pb-0 px-0 px-md-4">
+                            <img src="~/sneat-1.0.0/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 order-1">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <span class="avatar-initial rounded bg-label-success"><i class="bx bx-shopping-bag"></i></span>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Toplam Ürün</span>
+                            <h3 class="card-title mb-2">@ViewBag.ProductCount</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <span class="avatar-initial rounded bg-label-info"><i class="bx bx-category"></i></span>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Kategoriler</span>
+                            <h3 class="card-title text-nowrap mb-1">@ViewBag.CategoryCount</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <span class="avatar-initial rounded bg-label-warning"><i class="bx bx-star"></i></span>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Markalar</span>
+                            <h3 class="card-title text-nowrap mb-1">@ViewBag.PartnerCount</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <span class="avatar-initial rounded bg-label-danger"><i class="bx bx-message-rounded"></i></span>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Yorumlar</span>
+                            <h3 class="card-title text-nowrap mb-1">@ViewBag.TestimonialCount</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

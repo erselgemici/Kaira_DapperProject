@@ -1,0 +1,73 @@
+@model List<ResultCategoryDto>
+@*
+    Section CategoryList
+*@
+<section class="categories overflow-hidden">
+    <div class="container">
+        <div class="open-up" data-aos="zoom-out">
+            <div class="row">
+                
+                @if (Model.Count > 0)
+                {
+                    <div class="col-md-4">
+                        <div class="cat-item image-zoom-effect">
+                            <div class="image-holder">
+                                <a href="/Shop/Index?categoryId=@Model[1].CategoryId">
+                                    <img src="~/kaira-1.0.0/images/cat-item1.jpg" alt="Erkek Giyim" class="product-image img-fluid">
+                                </a>
+                            </div>
+                            <div class="category-content">
+                                <div class="product-button">
+                                    <a href="/Shop/Index?categoryId=@Model[1].CategoryId" class="btn btn-common text-uppercase">
+                                        @Model[1].Name
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Count > 1)
+                {
+                    <div class="col-md-4">
+                        <div class="cat-item image-zoom-effect">
+                            <div class="image-holder">
+                                <a href="/Shop/Index?categoryId=@Model[0].CategoryId">
+                                    <img src="~/kaira-1.0.0/images/cat-item2.jpg" alt="Kadın Giyim" class="product-image img-fluid">
+                                </a>
+                            </div>
+                            <div class="category-content">
+                                <div class="product-button">
+                                    <a href="/Shop/Index?categoryId=@Model[0].CategoryId" class="btn btn-common text-uppercase">
+                                        @Model[0].Name
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Count > 2)
+                {
+                    <div class="col-md-4">
+                        <div class="cat-item image-zoom-effect">
+                            <div class="image-holder">
+                                <a href="/Shop/Index?categoryId=@Model[2].CategoryId">
+                                    <img src="~/kaira-1.0.0/images/cat-item3.jpg" alt="Aksesuar" class="product-image img-fluid">
+                                </a>
+                            </div>
+                            <div class="category-content">
+                                <div class="product-button">
+                                    <a href="/Shop/Index?categoryId=@Model[2].CategoryId" class="btn btn-common text-uppercase">
+                                        @Model[2].Name
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

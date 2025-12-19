@@ -1,0 +1,77 @@
+
+@*
+    Section Newsletter
+*@
+<section class="ai-assistant bg-light" style="background: url('/kaira-1.0.0/images/pattern-bg.png') no-repeat;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 py-5 my-5">
+                <div class="subscribe-header text-center pb-3">
+                    <h3 class="section-title text-uppercase">AI SHOPPING ASSISTANT</h3>
+                    <p class="text-muted">Kararsız mı kaldınız? Stil önerisi isteyin veya hediye bulmamızı söyleyin.</p>
+                </div>
+
+                <div id="ai-response-box" class="alert alert-dark text-center" style="display:none;" role="alert">
+                    <h5 class="alert-heading"><i class="bi bi-stars"></i> Kaira AI Önerisi:</h5>
+                    <p id="ai-response-text" class="mb-0 fs-6"></p>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <input type="text" id="userQuery" name="query"
+                           placeholder="Örn: Yaz düğünü için elbise önerisi..."
+                           class="form-control form-control-lg">
+
+                    <button id="btnAskAi" class="btn btn-dark btn-lg text-uppercase w-100">
+                        Ask AI
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnAskAi").click(function () {
+
+            var query = $("#userQuery").val();
+            if (query.trim() === "") {
+                alert("Lütfen bir soru yazın!");
+                return;
+            }
+
+            // Butonu yükleniyor moduna al
+            var btn = $(this);
+            var originalText = btn.html();
+            btn.html("Düşünüyor...").prop("disabled", true);
+            $("#ai-response-box").slideUp();
+
+            $.ajax({
+                type: "POST",
+                url: "/AiAssistant/AskAi",
+                contentType: "application/json",
+                data: JSON.stringify({ userQuery: query }),
+                success: function (response) {
+                    if (response.success) {
+                        // Cevabı ekrana bas
+                        $("#ai-response-text").html(response.answer.replace(/\n/g, "<br />")); // Satır boşluklarını koru
+                        $("#ai-response-box").removeClass("alert-danger").addClass("alert-dark").slideDown();
+                    } else {
+                        // Hata mesajı
+                        $("#ai-response-text").text(response.message);
+                        $("#ai-response-box").removeClass("alert-dark").addClass("alert-danger").slideDown();
+                    }
+                },
+                error: function () {
+                    $("#ai-response-text").text("Sunucu ile iletişim hatası.");
+                    $("#ai-response-box").removeClass("alert-dark").addClass("alert-danger").slideDown();
+                },
+                complete: function () {
+                    // Butonu eski haline getir
+                    btn.html(originalText).prop("disabled", false);
+                }
+            });
+        });
+    });
+</script>

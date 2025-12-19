@@ -1,0 +1,19 @@
+@using Kaira.WebUI.DTOs.PartnerDtos
+@model IEnumerable<ResultPartnerDto>
+@*
+    Section PartnerLogos
+*@
+<section class="logo-bar py-5 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="logo-content d-flex flex-wrap justify-content-between">
+                
+                @foreach (var item in Model)
+                {
+                    <img src="@item.LogoUrl" alt="@item.PartnerName" class="logo-image img-fluid">
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

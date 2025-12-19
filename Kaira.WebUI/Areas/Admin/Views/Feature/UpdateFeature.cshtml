@@ -1,0 +1,49 @@
+@using Kaira.WebUI.DTOs.FeatureDtos
+@model UpdateFeatureDto
+
+@{
+    ViewData["Title"] = "Özellik Güncelle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">İçerik Yönetimi /</span> Özellik Düzenle</h4>
+
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Özellik Güncelleme Formu</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" asp-for="FeatureId" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Başlık</label>
+                            <input type="text" class="form-control" asp-for="Title" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Açıklama</label>
+                            <input type="text" class="form-control" asp-for="Description" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">İkon (SVG veya FontAwesome Kodu)</label>
+                            <input type="text" class="form-control" asp-for="IconSvg" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <span class="tf-icons bx bx-refresh"></span> Güncelle
+                        </button>
+                        <a href="/Admin/Feature/Index" class="btn btn-outline-secondary">
+                            <span class="tf-icons bx bx-arrow-back"></span> Vazgeç
+                        </a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,5 @@
 using Dapper;
 using Kaira.WebUI.Context;
-using Kaira.WebUI.DTOs.CollectionDtos;
 using Kaira.WebUI.DTOs.TestimonialDtos;
 using System.Data;
 

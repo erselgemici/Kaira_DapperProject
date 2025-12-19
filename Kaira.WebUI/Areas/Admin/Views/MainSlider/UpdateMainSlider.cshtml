@@ -1,0 +1,65 @@
+@using Kaira.WebUI.DTOs.MainSliderDtos
+@model UpdateMainSliderDto
+
+@{
+    ViewData["Title"] = "Slider Güncelle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">İçerik Yönetimi /</span> Slider Düzenle</h4>
+
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Slider Güncelleme Formu</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" asp-for="MainSliderId" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Başlık</label>
+                            <input type="text" class="form-control" asp-for="Title" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Açıklama</label>
+                            <input type="text" class="form-control" asp-for="Description" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Görsel URL</label>
+                            <input type="text" class="form-control" asp-for="ImageUrl" required />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Buton Yazısı</label>
+                                <input type="text" class="form-control" asp-for="ButtonText" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Buton Linki</label>
+                                <input type="text" class="form-control" asp-for="ButtonLink" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" asp-for="IsActive" id="defaultCheck1" />
+                            <label class="form-check-label" for="defaultCheck1">Slider Sitede Görünsün mü?</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <span class="tf-icons bx bx-refresh"></span> Güncelle
+                        </button>
+                        <a href="/Admin/MainSlider/Index" class="btn btn-outline-secondary">
+                            <span class="tf-icons bx bx-arrow-back"></span> Vazgeç
+                        </a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

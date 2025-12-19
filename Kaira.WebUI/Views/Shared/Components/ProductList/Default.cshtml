@@ -1,0 +1,88 @@
+@using Kaira.WebUI.DTOs.ProductDtos
+@model List<ResultProductDto>
+@*
+    Section ProductList
+*@
+
+
+<section class="product-carousel py-5 position-relative overflow-hidden">
+    <div class="container">
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+            <h4 class="text-uppercase">@ViewBag.SectionTitle</h4>
+            <a href="/Shop/Index" class="btn-link">Tüm Ürünleri Gör</a>
+        </div>
+
+        <div class="swiper product-swiper open-up" data-aos="zoom-out">
+            <div class="swiper-wrapper d-flex">
+
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="product-item image-zoom-effect link-effect">
+                            <div class="image-holder position-relative">
+
+                                <a href="/Shop/Detail/@item.ProductId">
+                                    <img src="@item.ImageUrl" alt="@item.Name" class="product-image img-fluid w-100 object-fit-cover" style="height: 400px;">
+                                </a>
+
+                                <a href="#" class="btn-icon btn-wishlist">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+
+                                <div class="product-content">
+                                    <h5 class="element-title text-uppercase fs-5 mt-3">
+                                        <a href="/Shop/Detail/@item.ProductId">@item.Name</a>
+                                    </h5>
+
+                                    <a href="#" class="text-decoration-none" data-after="Sepete Ekle">
+                                        <span>@item.Price.ToString("C2")</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="icon-arrow icon-arrow-left">
+            <svg width="50" height="50" viewBox="0 0 24 24">
+                <use xlink:href="#arrow-left"></use>
+            </svg>
+        </div>
+        <div class="icon-arrow icon-arrow-right">
+            <svg width="50" height="50" viewBox="0 0 24 24">
+                <use xlink:href="#arrow-right"></use>
+            </svg>
+        </div>
+
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Eğer projende Swiper kütüphanesi yüklüyse bu çalışır
+        var swiper = new Swiper(".product-swiper", {
+            slidesPerView: 1, // Mobilde 1 tane göster
+            spaceBetween: 20,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2, // Tablette 2 tane
+                },
+                1024: {
+                    slidesPerView: 4, // Masaüstünde 4 tane (İstediğimiz bu)
+                    spaceBetween: 30,
+                },
+            },
+        });
+    });
+</script>

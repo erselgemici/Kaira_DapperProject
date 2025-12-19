@@ -1,0 +1,43 @@
+@using Kaira.WebUI.DTOs.TestimonialDtos
+@model CreateTestimonialDto
+
+@{
+    ViewData["Title"] = "Yeni Yorum";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Site Ayarları /</span> Yeni Yorum</h4>
+
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Yeni Müşteri Yorumu</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">Ad Soyad</label>
+                            <input type="text" class="form-control" asp-for="NameSurname" placeholder="Örn: Zeynep Kaya" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Yorumu</label>
+                            <textarea class="form-control" asp-for="Comment" rows="4" placeholder="Müşterinin yorumu..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <span class="tf-icons bx bx-save"></span> Kaydet
+                        </button>
+                        <a href="/Admin/Testimonial/Index" class="btn btn-outline-secondary">
+                            <span class="tf-icons bx bx-arrow-back"></span> Vazgeç
+                        </a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
